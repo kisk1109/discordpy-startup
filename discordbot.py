@@ -1,10 +1,11 @@
 from discord.ext import commands
 import os
 import traceback
+import discord
 
 bot = commands.Bot(command_prefix='?')
 token = os.environ['DISCORD_BOT_TOKEN']
-
+client = discord.Client()
 
 @bot.event
 async def on_command_error(ctx, error):
@@ -16,6 +17,16 @@ async def on_command_error(ctx, error):
 @bot.command()
 async def ping(ctx):
     await ctx.send('pong')
+    
+@bot.command()
+async def test(ctx):
+    await ctx.send('!join')
+    await ctx.send('!play https://www.youtube.com/watch?v=s582L3gujnw')
 
-
+@client.event
+async def on_ready():
+    CHANNEL_ID = 658980967876263936# 任意のチャンネルID(int)
+    channel = client.get_channel(CHANNEL_ID)
+    await channel.send('BOT起動')
+    
 bot.run(token)
