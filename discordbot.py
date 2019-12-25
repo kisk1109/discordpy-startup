@@ -17,8 +17,8 @@ async def on_command_error(ctx, error):
 @bot.command()
 async def まじ反応しろ(ctx):
     await ctx.send('<@418022256057516033>')
-    await ctx.send('<@!418022256057516033>')
-    await ctx.send('"<@418022256057516033>"')
+    await ctx.send('<@418022256057516033>')
+    await ctx.send('<@418022256057516033>')
     await ctx.send('<@418022256057516033>')
     
 @bot.command()
