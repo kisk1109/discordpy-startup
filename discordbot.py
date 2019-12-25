@@ -15,8 +15,12 @@ async def on_command_error(ctx, error):
 
 
 @bot.command()
-async def ping(ctx):
-    await ctx.send('pong')
+async def まじ反応しろ(ctx):
+    await ctx.send('@ゆっくりウルフ#4122')
+    await ctx.send('@ゆっくりウルフ#4122')
+    await ctx.send('@ゆっくりウルフ#4122')
+    await ctx.send('@ゆっくりウルフ#4122')
+                
     
 @bot.command()
 async def test(ctx):
