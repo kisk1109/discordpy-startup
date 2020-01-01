@@ -2,6 +2,7 @@ from discord.ext import commands
 import os
 import traceback
 import discord
+import requests
 
 bot = commands.Bot(command_prefix='?')
 token = os.environ['DISCORD_BOT_TOKEN']
@@ -25,7 +26,12 @@ async def まじ反応しろ(ctx):
 async def test(ctx):
     await ctx.send('!join')
     await ctx.send('!play https://www.youtube.com/watch?v=s582L3gujnw')
-
+    
+@bot.command()
+async def status(ctx):
+    status = requests.get(http://minecraft.nagoya/query/frame.php?adress=fanjia.dip.jp&port=25565&color=0&status=0)
+    await ctx.send(status.text)
+    
 @client.event
 async def on_ready():
     CHANNEL_ID = 658980967876263936# 任意のチャンネルID(int)
