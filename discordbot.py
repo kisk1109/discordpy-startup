@@ -27,7 +27,7 @@ async def test(ctx):
     await ctx.send('!play https://www.youtube.com/watch?v=s582L3gujnw')
     
 @bot.command()
-async def !(ctx)
+async def what(ctx)
      await ctx.send('ヤバイわよ！', { file: { attachment: tenor.gif } });
     
 @client.event
