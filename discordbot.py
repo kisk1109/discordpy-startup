@@ -28,7 +28,7 @@ async def test(ctx):
     
 @bot.command()
 async def !(ctx)
-     await ctx.send('ヤバイわよ！', { file: { attachment: image } });
+     await ctx.send('ヤバイわよ！', { file: { attachment: tenor.gif } });
     
 @client.event
 async def on_ready():
