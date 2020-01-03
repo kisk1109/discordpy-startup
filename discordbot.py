@@ -27,7 +27,12 @@ async def daipan(ctx):
 async def test(testcmd):
     await testcmd.send('取得中') #画像取得してgithubへ
 
-
+# 存在しないコマンドが打たれた場合の処理
+@bot.event
+async def on_command_error(ctx, error):
+    if isinstance(error, CommandNotFound):
+        await ctx.send(f"{ctx.author.name}さん、*{ctx.message.content}*というコマンドはありませんよ！")
+    raise error
     
 @client.event
 async def on_ready():
