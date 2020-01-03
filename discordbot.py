@@ -26,6 +26,10 @@ async def test(ctx):
     await ctx.send('!join')
     await ctx.send('!play https://www.youtube.com/watch?v=s582L3gujnw')
     
+@bot.command()
+async def !(ctx)
+     await ctx.send('ヤバイわよ！', { file: { attachment: image } });
+    
 @client.event
 async def on_ready():
     CHANNEL_ID = 658980967876263936# 任意のチャンネルID(int)
