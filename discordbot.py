@@ -34,6 +34,19 @@ async def on_command_error(ctx, error):
         await ctx.send(f"{ctx.author.name}さん、*{ctx.message.content}*というコマンドはありませんよ！")
     raise error
     
+# ping-通信速度を測る
+@bot.command()
+async def ping(ctx):
+    before = time.monotonic()
+    embed = discord.Embed(description="Pong!")
+    msg = await ctx.send(embed=embed)
+    ping = (time.monotonic() - before) * 1000
+       
+    pingmsg = "反応速度:\n{0}ms".format(int(ping))
+    embed = discord.Embed(description=pingmsg)
+    await msg.edit(embed=embed)
+
+
 @client.event
 async def on_ready():
     CHANNEL_ID = 658980967876263936# 任意のチャンネルID(int)
