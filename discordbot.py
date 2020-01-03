@@ -23,8 +23,8 @@ async def まじ反応しろ(ctx):
     
 @bot.command()
 async def test(ctx):
-    await ctx.send('!join')
-    await ctx.send('!play https://www.youtube.com/watch?v=s582L3gujnw')
+    await ctx.send('test')
+    await ctx.send('ヤバイわよ！',{files: ["./tenor.gif"]})
 
     
 @client.event
