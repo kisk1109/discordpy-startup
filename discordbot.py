@@ -22,7 +22,7 @@ async def まじ反応しろ(ctx):
     await ctx.send('<@418022256057516033>')
     
 @bot.command()
-async def たいがいにせぇよ！(ctx):
+async def daipan(ctx):
     await ctx.send('ヤバイわよ！',file=discord.File('tenor.gif'))
 
     
