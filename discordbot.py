@@ -24,7 +24,7 @@ async def まじ反応しろ(ctx):
 @bot.command()
 async def test(ctx):
     await ctx.send('test')
-    await ctx.send('ヤバイわよ！',{files: ["./tenor.gif"]})
+    await ctx.send('ヤバイわよ！',file=discord.File('tenor.gif'))
 
     
 @client.event
