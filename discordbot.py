@@ -24,6 +24,9 @@ async def まじ反応しろ(ctx):
 @bot.command()
 async def daipan(ctx):
     await ctx.send('ヤバイわよ！',file=discord.File('tenor.gif'))
+async def test(testcmd):
+    await testcmd.send('取得中') #画像取得してgithubへ
+
 
     
 @client.event
