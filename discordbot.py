@@ -2,6 +2,7 @@ from discord.ext import commands
 import os
 import traceback
 import discord
+import re 
 
 bot = commands.Bot(command_prefix='?')
 token = os.environ['DISCORD_BOT_TOKEN']
@@ -24,8 +25,13 @@ async def まじ反応しろ(ctx):
 @bot.command()
 async def daipan(ctx):
     await ctx.send('ヤバイわよ！',file=discord.File('tenor.gif'))
-async def test(testcmd):
-    await testcmd.send('取得中') #画像取得してgithubへ
+    
+@bot.command()
+async def gomi(ctx):
+    voice = await client.join_voice_channel(message.author.voice_channel)
+    player = voice.create_ffmpeg_player('gomikasu.wav')
+    player.start()
+    
 
 # 存在しないコマンドが打たれた場合の処理
 @bot.event
@@ -33,6 +39,15 @@ async def on_command_error(ctx, error):
     if isinstance(error, CommandNotFound):
         await ctx.send(f"{ctx.author.name}さん、*{ctx.message.content}*というコマンドはありませんよ！")
     raise error
+    
+@bot.event
+async def on_massage(msg):
+    if message.author.bot:
+        return
+    if re.search(r'ゴミカス',msg,content):
+    voice = await client.join_voice_channel(message.author.voice_channel)
+    player = voice.create_ffmpeg_player('gomikasu.wav')
+    player.start()
     
 # ping-通信速度を測る
 @bot.command()
