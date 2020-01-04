@@ -28,9 +28,6 @@ async def daipan(ctx):
     
 @bot.command()
 async def gomi(ctx):
-    if ctx.autor.voice is not None:
-        await ctx.send('先に接続してください')
-        return
     vcc = ctx.author.voice.channel
     vc = await vcc.connect()
     
