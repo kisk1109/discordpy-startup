@@ -28,9 +28,11 @@ async def daipan(ctx):
     
 @bot.command()
 async def gomi(ctx):
-    voice = await client.join_voice_channel(message.author.voice_channel)
-    player = voice.create_ffmpeg_player('gomikasu.wav')
-    player.start()
+    if ctx.autor.voice is not None:
+        await ctx.send('先に接続してください')
+        return
+    vcc = ctx.author.voice.channel
+    vc = await vcc.connect()
     
 # ping-通信速度を測る
 @bot.command()
