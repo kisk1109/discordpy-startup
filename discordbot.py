@@ -32,23 +32,6 @@ async def gomi(ctx):
     player = voice.create_ffmpeg_player('gomikasu.wav')
     player.start()
     
-
-# 存在しないコマンドが打たれた場合の処理
-@bot.event
-async def on_command_error(ctx, error):
-    if isinstance(error, CommandNotFound):
-        await ctx.send(f"{ctx.author.name}さん、*{ctx.message.content}*というコマンドはありませんよ！")
-    raise error
-    
-@bot.event
-async def on_massage(msg):
-    if message.author.bot:
-        return
-    if re.search(r'ゴミカス',msg,content):
-        voice = await client.join_voice_channel(message.author.voice_channel)
-        player = voice.create_ffmpeg_player('gomikasu.wav')
-        player.start()
-    
 # ping-通信速度を測る
 @bot.command()
 async def ping(ctx):
