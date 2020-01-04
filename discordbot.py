@@ -3,6 +3,7 @@ import os
 import traceback
 import discord
 import re 
+import ffmpeg
 
 bot = commands.Bot(command_prefix='?')
 token = os.environ['DISCORD_BOT_TOKEN']
@@ -28,8 +29,13 @@ async def daipan(ctx):
     
 @bot.command()
 async def gomi(ctx):
-    vcc = ctx.author.voice.channel
-    vc = await vcc.connect()
+    #voicechannelを取得
+    vc = ctx.author.voice.channel
+    #voicechannelに接続
+    await vc.connect()
+    player = vc.create_ffmpeg_player('gomikasu.wav')
+    player.start()
+
     
 # ping-通信速度を測る
 @bot.command()
