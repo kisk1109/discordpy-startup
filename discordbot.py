@@ -45,9 +45,9 @@ async def on_massage(msg):
     if message.author.bot:
         return
     if re.search(r'ゴミカス',msg,content):
-    voice = await client.join_voice_channel(message.author.voice_channel)
-    player = voice.create_ffmpeg_player('gomikasu.wav')
-    player.start()
+        voice = await client.join_voice_channel(message.author.voice_channel)
+        player = voice.create_ffmpeg_player('gomikasu.wav')
+        player.start()
     
 # ping-通信速度を測る
 @bot.command()
