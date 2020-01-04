@@ -51,7 +51,6 @@ async def ping(ctx):
     embed = discord.Embed(description=pingmsg)
     await msg.edit(embed=embed)
 
-
 @client.event
 async def on_ready():
     CHANNEL_ID = 658980967876263936# 任意のチャンネルID(int)
