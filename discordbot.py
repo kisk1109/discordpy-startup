@@ -35,8 +35,8 @@ async def gomi(ctx):
     vc = ctx.author.voice.channel
     #voicechannelに接続
     await vc.connect()
-    player = vc.create_ffmpeg_player('gomikasu.wav')
-    player.start()
+    source = discord.FFmpegPCMAudio("gomikasu.wav")
+    voice_client.play(source)
 
     
 # ping-通信速度を測る
