@@ -28,6 +28,9 @@ async def daipan(ctx):
     
 @bot.command()
 async def gomi(ctx):
+    if not discord.opus.is_loaded(): 
+    #もし未ロードだったら
+        discord.opus.load_opus("heroku-buildpack-libopus")
     #voicechannelを取得
     vc = ctx.author.voice.channel
     #voicechannelに接続
