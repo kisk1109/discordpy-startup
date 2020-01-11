@@ -29,6 +29,9 @@ async def daipan(ctx):
 @bot.command()
 async def gomi(ctx):
     voice_client = ctx.message.guild.voice_client
+    if message.author.voice.channel is None:
+        await message.channel.send("ボイスチャンネルに参加してから起動してください")
+        retune
     if not discord.opus.is_loaded(): 
     #もし未ロードだったら
         discord.opus.load_opus("heroku-buildpack-libopus")
@@ -36,7 +39,8 @@ async def gomi(ctx):
     vc = ctx.author.voice.channel
     #voicechannelに接続
     await ctx.author.voice.channel.connect()
-    source = discord.FFmpegPCMAudio("gomikasu.wav")
+    source = discord.PCMVolumeTransformer(discord.FFmpegPCMAudio("gomikasu.wav"),volume=0.5)
+    source.volume = float(msg)
     ctx.message.guild.voice_client.play(source)
 
     
