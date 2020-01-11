@@ -29,7 +29,7 @@ async def daipan(ctx):
 @bot.command()
 async def gomi(ctx):
     voice_client = ctx.message.guild.voice_client
-    if ctx.message.author.voice.channel is None:
+    if ctx.author.voice.channel is None:
         await message.channel.send("ボイスチャンネルに参加してから起動してください")
         retune
     if not discord.opus.is_loaded(): 
