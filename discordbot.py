@@ -29,9 +29,6 @@ async def daipan(ctx):
 @bot.command()
 async def gomi(ctx):
     voice_client = ctx.message.guild.voice_client
-    if ctx.author.voice.channel is None:
-        await ctx.send("ボイスチャンネルに参加してから起動してください")
-        
     if not discord.opus.is_loaded(): 
     #もし未ロードだったら
         discord.opus.load_opus("heroku-buildpack-libopus")
