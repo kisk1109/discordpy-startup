@@ -27,21 +27,15 @@ async def daipan(ctx):
     await ctx.send('ヤバイわよ！',file=discord.File('tenor.gif'))
     
 @bot.command()
-async def p(ctx,age1,age2):
+async def gomi(ctx):
     voice_client = ctx.message.guild.voice_client
-    vc = ctx.author.voice.channel
-    music = None
     if not discord.opus.is_loaded(): 
+    #もし未ロードだったら
         discord.opus.load_opus("heroku-buildpack-libopus")
-    if message.author.voice_channel is None:
-        await ctx.send('ボイスチャンネルに参加した上で、もう一度実行してください。')
-        return
-    if voice == None:
-        voice = await client.join_voice_channel(message.author.voice_channel)
-    # 接続しているかを確認
-    elif(voice.is_connected() == True):
+    #voicechannelを取得
+    vc = ctx.author.voice.channel
     #voicechannelに接続
-        await ctx.author.voice.channel.connect()
+    await ctx.author.voice.channel.connect()
     source = discord.FFmpegPCMAudio("gomikasu.wav")
     ctx.message.guild.voice_client.play(source)
 
