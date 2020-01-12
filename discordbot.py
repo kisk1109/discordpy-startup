@@ -40,10 +40,6 @@ async def p(ctx,age1,age2):
         voice = await client.join_voice_channel(message.author.voice_channel)
     # 接続しているかを確認
     elif(voice.is_connected() == True):
-        # 接続先で音声を流しているか確認
-        if(player.is_playing()):
-            # 流していれば停止させる
-            player.stop()
     #voicechannelに接続
     await ctx.author.voice.channel.connect()
     if age1 == gomi:
