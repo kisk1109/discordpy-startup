@@ -8,38 +8,53 @@ bot = commands.Bot(command_prefix='?')
 token = os.environ['DISCORD_BOT_TOKEN']
 client = discord.Client()
 
-@bot.event
+@bot.event #エラーメッセージ
 async def on_command_error(ctx, error):
     orig_error = getattr(error, "original", error)
     error_msg = ''.join(traceback.TracebackException.from_exception(orig_error).format())
     await ctx.send(error_msg)
 
-
-@bot.command()
+@bot.command()　# ウルフ呼び出し
 async def まじ反応しろ(ctx):
     await ctx.send('<@418022256057516033>')
     await ctx.send('<@418022256057516033>')
     await ctx.send('<@418022256057516033>')
     await ctx.send('<@418022256057516033>')
     
-@bot.command()
+@bot.command() # ヤバイわよ！
 async def daipan(ctx):
     await ctx.send('ヤバイわよ！',file=discord.File('tenor.gif'))
     
-@bot.command()
+@bot.command() #　ぎばら　ゴミカス
 async def gomi(ctx):
-    voice_client = ctx.message.guild.voice_client
-    if not discord.opus.is_loaded(): 
-    #もし未ロードだったら
+    if not discord.opus.is_loaded(): #もし未ロードだったら
         discord.opus.load_opus("heroku-buildpack-libopus")
-    #voicechannelを取得
-    vc = ctx.author.voice.channel
-    #voicechannelに接続
-    await ctx.author.voice.channel.connect()
+    voice_client = ctx.message.guild.voice_client
+    vc = ctx.author.voice.channel # VCを取得
+    await ctx.author.voice.channel.connect() # VCに接続
     source = discord.FFmpegPCMAudio("gomikasu.wav")
     ctx.message.guild.voice_client.play(source)
-
+    
 @client.event
+async def on_message(message):
+    # メッセージ送信者がBotだった場合は無視する
+    if message.author.bot:
+        return
+    
+    # 「/neko」と発言したら「にゃーん」が返る処理
+    if message.content == '?vc':
+        await message.channel.send('にゃーん')
+        
+@client.event
+async def on_message(message):
+    if message.content == '?cleanup':
+        if message.author.guild_permissions.administrator:
+            await message.channel.purge()
+            await message.channel.send('塵一つ残らないね！')
+        else:
+            await message.channel.send('何様のつもり？')
+
+@client.event 
 async def on_ready():
     CHANNEL_ID = '658980967876263936' # 任意のチャンネルID(int)
     channel = client.get_channel(CHANNEL_ID)
