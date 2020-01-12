@@ -36,8 +36,7 @@ async def gomi(ctx):
     vc = ctx.author.voice.channel
     #voicechannelに接続
     await ctx.author.voice.channel.connect()
-    source = discord.PCMVolumeTransformer(discord.FFmpegPCMAudio("gomikasu.wav"),volume=0.5)
-    source.volume = float(msg)
+    source = discord.FFmpegPCMAudio("gomikasu.wav")
     ctx.message.guild.voice_client.play(source)
 
     
