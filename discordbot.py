@@ -41,7 +41,7 @@ async def p(ctx,age1,age2):
     # 接続しているかを確認
     elif(voice.is_connected() == True):
     #voicechannelに接続
-    await ctx.author.voice.channel.connect()
+        await ctx.author.voice.channel.connect()
     if age1 == gomi:
         music = "gomikasu.wav"
     if age1 == gaku:
