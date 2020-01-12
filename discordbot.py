@@ -30,7 +30,7 @@ async def daipan(ctx):
 async def p(ctx,age1,age2):
     voice_client = ctx.message.guild.voice_client
     vc = ctx.author.voice.channel
-    music = 
+    music = None
     if not discord.opus.is_loaded(): 
         discord.opus.load_opus("heroku-buildpack-libopus")
     if message.author.voice_channel is None:
