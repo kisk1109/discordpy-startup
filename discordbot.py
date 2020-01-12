@@ -27,11 +27,11 @@ async def daipan(ctx):
     
 @bot.command()
 async def gomi(ctx):
-    if not discord.opus.is_loaded(): #もし未ロードだったら
+    if not discord.opus.is_loaded(): 
         discord.opus.load_opus("heroku-buildpack-libopus")
     voice_client = ctx.message.guild.voice_client
-    vc = ctx.author.voice.channel # VCを取得
-    await ctx.author.voice.channel.connect() # VCに接続
+    vc = ctx.author.voice.channel
+    await ctx.author.voice.channel.connect()
     source = discord.FFmpegPCMAudio("gomikasu.wav")
     ctx.message.guild.voice_client.play(source)
         
@@ -46,7 +46,7 @@ async def on_message(message):
 
 @client.event 
 async def on_ready():
-    CHANNEL_ID = '658980967876263936' # 任意のチャンネルID(int)
+    CHANNEL_ID = '658980967876263936' 
     channel = client.get_channel(CHANNEL_ID)
     await channel.send('BOT起動')
     
