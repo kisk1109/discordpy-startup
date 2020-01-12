@@ -35,14 +35,13 @@ async def gomi(ctx):
     source = discord.FFmpegPCMAudio("gomikasu.wav")
     ctx.message.guild.voice_client.play(source)
         
-@client.event
-async def on_message(message):
-    if message.content == '?cleanup':
-        if message.author.guild_permissions.administrator:
-            await message.channel.purge()
-            await message.channel.send('塵一つ残らないね！')
+@bot.command()
+async def cleanup(cmd):
+        if cmd.author.guild_permissions.administrator:
+            await cmd.channel.purge()
+            await cmd.channel.send('塵一つ残らないね！')
         else:
-            await message.channel.send('何様のつもり？')
+            await cmd.channel.send('何様のつもり？')
 
 @client.event 
 async def on_ready():
