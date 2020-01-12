@@ -34,7 +34,7 @@ async def p(ctx,age1,age2):
     if not discord.opus.is_loaded(): 
         discord.opus.load_opus("heroku-buildpack-libopus")
     if message.author.voice_channel is None:
-        await client.send_message(message.channel ,'ボイスチャンネルに参加した上で、もう一度実行してください。')
+        await ctx.send('ボイスチャンネルに参加した上で、もう一度実行してください。')
         return
     if voice == None:
         voice = await client.join_voice_channel(message.author.voice_channel)
