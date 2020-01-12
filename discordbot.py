@@ -14,18 +14,18 @@ async def on_command_error(ctx, error):
     error_msg = ''.join(traceback.TracebackException.from_exception(orig_error).format())
     await ctx.send(error_msg)
 
-@bot.command()　#ウルフ呼び出し
+@bot.command()
 async def ウルフ(ctx):
     await ctx.send('<@418022256057516033>')
     await ctx.send('<@418022256057516033>')
     await ctx.send('<@418022256057516033>')
     await ctx.send('<@418022256057516033>')
     
-@bot.command() #ヤバイわよ！
+@bot.command()
 async def daipan(ctx):
     await ctx.send('ヤバイわよ！',file=discord.File('tenor.gif'))
     
-@bot.command() #ぎばらゴミカス
+@bot.command()
 async def gomi(ctx):
     if not discord.opus.is_loaded(): #もし未ロードだったら
         discord.opus.load_opus("heroku-buildpack-libopus")
@@ -34,16 +34,6 @@ async def gomi(ctx):
     await ctx.author.voice.channel.connect() # VCに接続
     source = discord.FFmpegPCMAudio("gomikasu.wav")
     ctx.message.guild.voice_client.play(source)
-    
-@client.event
-async def on_message(message):
-    # メッセージ送信者がBotだった場合は無視する
-    if message.author.bot:
-        return
-    
-    # 「/neko」と発言したら「にゃーん」が返る処理
-    if message.content == '?vc':
-        await message.channel.send('にゃーん')
         
 @client.event
 async def on_message(message):
