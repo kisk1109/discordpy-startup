@@ -30,7 +30,7 @@ async def daipan(ctx):
 async def p(ctx,age1,age2):
     voice_client = ctx.message.guild.voice_client
     vc = ctx.author.voice.channel
-    music = "gomikasu.wav"
+    music = 
     if not discord.opus.is_loaded(): 
         discord.opus.load_opus("heroku-buildpack-libopus")
     if message.author.voice_channel is None:
@@ -42,11 +42,7 @@ async def p(ctx,age1,age2):
     elif(voice.is_connected() == True):
     #voicechannelに接続
         await ctx.author.voice.channel.connect()
-    if age1 == gomi:
-        music = "gomikasu.wav"
-    if age1 == gaku:
-        music = "gaku-otousandayo.wav"
-    source = discord.FFmpegPCMAudio(music)
+    source = discord.FFmpegPCMAudio("gomikasu.wav")
     ctx.message.guild.voice_client.play(source)
 
 @client.event
