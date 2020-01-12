@@ -14,18 +14,18 @@ async def on_command_error(ctx, error):
     error_msg = ''.join(traceback.TracebackException.from_exception(orig_error).format())
     await ctx.send(error_msg)
 
-@bot.command()　# ウルフ呼び出し
-async def まじ反応しろ(ctx):
+@bot.command()　#ウルフ呼び出し
+async def ウルフ(ctx):
     await ctx.send('<@418022256057516033>')
     await ctx.send('<@418022256057516033>')
     await ctx.send('<@418022256057516033>')
     await ctx.send('<@418022256057516033>')
     
-@bot.command() # ヤバイわよ！
+@bot.command() #ヤバイわよ！
 async def daipan(ctx):
     await ctx.send('ヤバイわよ！',file=discord.File('tenor.gif'))
     
-@bot.command() #　ぎばら　ゴミカス
+@bot.command() #ぎばらゴミカス
 async def gomi(ctx):
     if not discord.opus.is_loaded(): #もし未ロードだったら
         discord.opus.load_opus("heroku-buildpack-libopus")
