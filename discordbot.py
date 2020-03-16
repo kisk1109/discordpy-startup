@@ -42,6 +42,15 @@ async def cleanup(cmd):
             await cmd.channel.send('塵一つ残らないね！')
         else:
             await cmd.channel.send('何様のつもり？')
+            
+@bot.command()
+async def 全部消えちゃえ(cmd):
+        if cmd.author.guild_permissions.administrator:
+            await cmd.channel.purge()
+            await cmd.channel.send('テキストチャンネルを灰にしてしまいました')
+        else:
+            await cmd.channel.send('何様のつもり？')
+
 
 @client.event 
 async def on_ready():
