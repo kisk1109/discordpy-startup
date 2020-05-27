@@ -27,6 +27,12 @@ async def ウルフ(ctx):
 async def daipan(ctx):
     await ctx.send('ヤバイわよ！',file=discord.File('tenor.gif'))
     
+
+@bot.command()
+async def 三宅(ctx):
+    await ctx.send('てすと',file=discord.File('miyake.jpg'))
+    
+
 @bot.command()
 async def gomi(ctx):
     if not discord.opus.is_loaded(): 
