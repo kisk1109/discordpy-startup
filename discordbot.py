@@ -30,7 +30,7 @@ async def daipan(ctx):
 
 @bot.command()
 async def 三宅(ctx):
-    await ctx.send('てすと',file=discord.File('miyake.jpg'))
+    await ctx.send('てすと',file=discord.File('miyake.'))
     
 
 @bot.command()
