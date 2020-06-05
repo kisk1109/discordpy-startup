@@ -10,11 +10,18 @@ bot = commands.Bot(command_prefix='?')
 token = os.environ['DISCORD_BOT_TOKEN']
 client = discord.Client()
 
-@bot.event #エラーメッセージ
+@bot.event
 async def on_command_error(ctx, error):
-    orig_error = getattr(error, "original", error)
-    error_msg = ''.join(traceback.TracebackException.from_exception(orig_error).format())
-    await ctx.send(error_msg)
+    ch = 658980967876263936
+    embed = discord.Embed(title="エラー情報", description="", color=0xf00)
+    embed.add_field(name="エラー発生サーバー名", value=ctx.guild.name, inline=False)
+    embed.add_field(name="エラー発生サーバーID", value=ctx.guild.id, inline=False)
+    embed.add_field(name="エラー発生ユーザー名", value=ctx.author.name, inline=False)
+    embed.add_field(name="エラー発生ユーザーID", value=ctx.author.id, inline=False)
+    embed.add_field(name="エラー発生コマンド", value=ctx.message.content, inline=False)
+    embed.add_field(name="発生エラー", value=error, inline=False)
+    m = await bot.get_channel(ch).send(embed=embed)
+    await ctx.send(f"何らかのエラーが発生しました。ごめんなさい。\nこのエラーについて問い合わせるときはこのコードも一緒にお知らせください：{m.id}")
 
 @bot.command()
 async def ウルフ(ctx):
