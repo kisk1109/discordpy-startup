@@ -8,17 +8,21 @@ import re
 bot = commands.Bot(command_prefix='?')
 token = os.environ['DISCORD_BOT_TOKEN']
 client = discord.Client()
+
+if not discord.opus.is_loaded():
+    discord.opus.load_opus("heroku-buildpack-libopus")
     
 
 @bot.command()
 async def gomi(ctx):
-    if not discord.opus.is_loaded(): 
-        discord.opus.load_opus("heroku-buildpack-libopus")
+        """指定された音声ファイルを流します。"""
     voice_client = ctx.message.guild.voice_client
-    vc = ctx.author.voice.channel
-    await ctx.author.voice.channel.connect()
-    source = discord.FFmpegPCMAudio("gomikasu.wav")
-    ctx.message.guild.voice_client.play(source)
+
+    if not voice_client:
+        await ctx.send("Botはこのサーバーのボイスチャンネルに参加していません。")
+        return
+    ffmpeg_audio_source = discord.FFmpegPCMAudio("gomikasu.wav")
+    voice_client.play(ffmpeg_audio_source)
             
 @bot.command()
 async def 全部消えちゃえ(cmd):
