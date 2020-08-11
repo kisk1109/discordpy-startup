@@ -13,16 +13,7 @@ if not discord.opus.is_loaded():
     discord.opus.load_opus("heroku-buildpack-libopus")
     
 
-@bot.command()
-async def gomi(ctx):
-        """指定された音声ファイルを流します。"""
-    voice_client = ctx.message.guild.voice_client
 
-    if not voice_client:
-        await ctx.send("Botはこのサーバーのボイスチャンネルに参加していません。")
-        return
-    ffmpeg_audio_source = discord.FFmpegPCMAudio("gomikasu.wav")
-    voice_client.play(ffmpeg_audio_source)
             
 @bot.command()
 async def 全部消えちゃえ(cmd):
